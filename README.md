@@ -2,7 +2,7 @@
 
 Kho lưu trữ chuẩn hóa toàn bộ kỹ năng (**Skills**), cấu hình quy tắc (**AGENTS.md**), và bản sắc hoạt động (**SOUL.md**) cho các Agent lập trình thông minh: **Claude Code** và **Google Antigravity (Gemini CLI)**.
 
-Được thiết kế theo cấu trúc module tương thích chuẩn mã nguồn mở (tương tự `anthropics/skills` và `fission-ai/openspec`), hỗ trợ **324+ skills chuyên biệt**, tự động kích hoạt qua ngôn ngữ tự nhiên tiếng Việt.
+Được thiết kế theo cấu trúc module tương thích chuẩn mã nguồn mở (tương tự `anthropics/skills` và `fission-ai/openspec`), hỗ trợ **330+ skills chuyên biệt**, tự động kích hoạt qua ngôn ngữ tự nhiên tiếng Việt.
 
 ---
 
@@ -23,7 +23,8 @@ ai-agent-skills-backup/
 │   ├── install-to-claude.ps1      # Cài đặt / đồng bộ toàn bộ skills sang ~/.claude/
 │   └── install-to-antigravity.ps1 # Cài đặt / đồng bộ plugins sang ~/.gemini/config/plugins/
 │
-├── skills/                    # Kho 324+ kỹ năng chuẩn hóa (Mỗi thư mục chứa SKILL.md)
+├── skills/                    # Kho 330+ kỹ năng chuẩn hóa (Mỗi thư mục chứa SKILL.md)
+│   ├── smart-test/            # [MỚI] Kỹ nghệ kiểm thử thông minh & tối ưu CI (Blast-radius lanes)
 │   ├── impeccable/            # Audit & trau chuốt UI đỉnh cao
 │   ├── design-taste-frontend/ # Chống AI slop, nâng tầm thẩm mỹ frontend
 │   ├── minimalist-ui/         # Giao diện tối giản phong cách báo chí
@@ -41,6 +42,7 @@ ai-agent-skills-backup/
 │   ├── clean-code/            # Quy chuẩn viết code tinh gọn, chuẩn SOLID
 │   ├── database-design/       # Thiết kế CSDL, indexing, quan hệ thực thể
 │   ├── openspec-*/            # 12 kỹ năng Spec-Driven Change Management
+│   ├── chrome-devtools/       # Gói debug hiệu năng & a11y với Chrome DevTools
 │   └── ...                    # Các kỹ năng Cloudflare, Vercel, WordPress, Khoa học
 │
 └── plugins/                   # Gói Plugins hoàn chỉnh cho Google Antigravity
@@ -49,6 +51,7 @@ ai-agent-skills-backup/
     ├── elite-workflows-and-taste/
     ├── openspec-plugin/
     ├── social-media-skills/
+    ├── chrome-devtools-plugin/
     └── scientific-agent-skills/
 ```
 
@@ -56,26 +59,32 @@ ai-agent-skills-backup/
 
 ## 🎯 Danh Mục Kỹ Năng Tinh Hoa Nổi Bật
 
-### 1. Thẩm Mỹ Giao Diện & Chống "AI Slop"
+### 1. Kiểm Thử Thông Minh & Tối Ưu CI (Testing Engineering - MỚI)
+- **`smart-test`**: Kỹ nghệ kiểm thử định hướng hành vi (Behavior-First Testing) với hệ thống phân làn vùng ảnh hưởng (Blast-Radius Lanes):
+  - **Create Protocol (`viết test / tạo test`)**: Khảo sát mã nguồn trước khi viết, kiểm thử hành vi thực tế thay vì kiểm thử implementation, không test trùng lặp.
+  - **Audit Protocol (`audit test / tìm test rác`)**: Quét và dọn dẹp các bài test vô nghĩa (test chỉ để đủ coverage, test không assert gì, mock quá đà).
+  - **Optimize Protocol (`tăng tốc CI / optimize CI`)**: Phân tích ma trận phụ thuộc, chia làn chạy song song giúp CI chạy nhanh gấp 2–5 lần.
+
+### 2. Thẩm Mỹ Giao Diện & Chống "AI Slop"
 - **`impeccable`**: Kỹ năng trau chuốt UI đa nền tảng (Web, iOS, Android), audit spacing, micro-interactions và typography hierarchy.
 - **`design-taste-frontend`**: Khắc phục các giao diện AI nhạt nhẽo (generic gradient, card vô hồn), áp dụng ngôn ngữ thiết kế độc bản.
 - **`minimalist-ui` & `industrial-brutalist-ui`**: Hai phong cách thiết kế thời thượng: Tối giản sang trọng kiểu tạp chí hoặc phong cách kỹ thuật thô mộc.
 - **`full-output-enforcement`**: Loại bỏ vĩnh viễn thói quen viết tắt `// TODO: tự code tiếp` của AI.
 
-### 2. Quy Trình Phối Hợp Đa Vai Trò (GStack Engine)
+### 3. Quy Trình Phối Hợp Đa Vai Trò (GStack Engine)
 - **`plan-ceo-review`**: Đánh giá tính khả thi kinh doanh, giá trị cốt lõi sản phẩm dưới lăng kính Founder.
 - **`plan-eng-review`**: Thẩm định độ mở rộng, bảo mật, bẫy hiệu năng và tính ổn định kiến trúc.
 - **`qa` & `ship`**: Kiểm thử toàn diện hành trình người dùng và thực hiện quy trình đóng gói ra mắt (ship code).
 
-### 3. Tối Ưu Bộ Nhớ & Ngữ Cảnh (Memory & Context)
+### 4. Tối Ưu Bộ Nhớ & Ngữ Cảnh (Memory & Context)
 - **`claude-mem` & `mem-search`**: Nhớ lịch sử quyết định qua từng phiên làm việc, không bị "mất trí nhớ" khi khởi động lại.
 - **`strategic-compact`**: Chủ động phân tích và nén token để AI không bao giờ bị nghẽn context khi dự án phình to.
 - **`handoff`**: Tạo tài liệu bàn giao ca chuẩn chỉnh cho phiên làm việc tiếp theo.
 
-### 4. Phát Triển Phần Mềm Định Hướng Đặc Tả (Spec-Driven Development)
+### 5. Phát Triển Phần Mềm Định Hướng Đặc Tả (Spec-Driven Development)
 - **`openspec-*`**: Bộ 12 kỹ năng quản lý thay đổi phần mềm theo chu trình: `explore` ➔ `propose` ➔ `apply` ➔ `verify` ➔ `archive`.
 
-### 5. Sáng Tạo Nội Dung & Tự Nhiên Hóa Ngôn Ngữ
+### 6. Sáng Tạo Nội Dung & Tự Nhiên Hóa Ngôn Ngữ
 - **`humanizer`**: Lọc bỏ mọi mẫu câu máy móc, sáo rỗng, chuyển văn phong AI thành giọng điệu chân thực của con người.
 - **`post-writer` & `content-matrix`**: Lên ý tưởng ma trận 32+ chủ đề và viết bài đa nền tảng (LinkedIn, Facebook, Threads).
 
@@ -100,6 +109,9 @@ Chạy script PowerShell để kích hoạt toàn bộ Plugins và Intent Classi
 ## 🗣️ Điều Khiển Tự Nhiên Bằng Tiếng Việt
 
 Bạn không cần nhớ tên file tiếng Anh. Nhờ cơ chế nhận diện ý định tại `AGENTS.md`, bạn chỉ cần trò chuyện tự nhiên:
+- *"Viết unit test cho tính năng này / kiểm thử hành vi"* ➔ Tự động gọi `smart-test`.
+- *"Audit test xem có test rác hay mock vô nghĩa không"* ➔ Tự động gọi `smart-test`.
+- *"Tăng tốc CI, chia làn blast radius"* ➔ Tự động gọi `smart-test`.
 - *"Trau chuốt lại UI trang này cho thật đẳng cấp"* ➔ Tự động gọi `impeccable`.
 - *"Review code PR này dưới góc nhìn founder"* ➔ Tự động gọi `plan-ceo-review`.
 - *"Nén ngữ cảnh lại để tránh tràn token"* ➔ Tự động gọi `strategic-compact`.
@@ -107,4 +119,4 @@ Bạn không cần nhớ tên file tiếng Anh. Nhờ cơ chế nhận diện ý
 - *"Sửa bài viết này cho tự nhiên, khử mùi AI"* ➔ Tự động gọi `humanizer`.
 
 ---
-*Kho lưu trữ được đồng bộ và cập nhật ngày 02/10/2026.*
+*Kho lưu trữ được cập nhật ngày 14/10/2026 với 330+ kỹ năng chuẩn hóa.*

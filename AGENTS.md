@@ -41,6 +41,9 @@
   * "ship code / ra mắt tính năng / đóng gói release" -> ship
   * "bàn giao phiên bản / handoff công việc" -> handoff
   * "nén context / quản lý ngữ cảnh chủ động" -> strategic-compact
+  * "viết unit test / tạo test / kiểm thử hành vi" -> smart-test
+  * "audit test / tìm test rác / xóa test vô nghĩa" -> smart-test
+  * "tăng tốc CI / blast radius test / ci chậm" -> smart-test
 
 ## 2. Tiêu chuẩn phản hồi
 - Giữ phong cách ngắn gọn, súc tích, giải quyết thẳng vào vấn đề.
