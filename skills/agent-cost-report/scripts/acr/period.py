@@ -14,6 +14,21 @@ PT = ZoneInfo("America/Los_Angeles")
 
 DEFAULT_DAYS = 7
 
+# English abbreviations. POSIX %-d is rejected by the Windows C runtime ("Invalid format
+# string"), and localized %a/%b would change the report labels the fixtures lock in.
+_WEEKDAY = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+_MONTH = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+
+def fmt_date(when, fmt):
+    """strftime subset used by report labels: %a %b %d %-d %Y, English, unpadded %-d."""
+    return (fmt.replace("%a", _WEEKDAY[when.weekday()])
+               .replace("%b", _MONTH[when.month - 1])
+               .replace("%-d", str(when.day))
+               .replace("%Y", f"{when.year:04d}")
+               .replace("%m", f"{when.month:02d}")
+               .replace("%d", f"{when.day:02d}"))
+
 
 DAY_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 

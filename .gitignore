@@ -29,6 +29,24 @@ file-history/
 paste-cache/
 session-env/
 sessions/
+# Codex transcript fixtures live under a sessions/ directory on purpose.
+!skills/agent-cost-report/scripts/tests/fixtures/codex/sessions/
+!skills/agent-cost-report/scripts/tests/fixtures/codex/sessions/**
 shell-snapshots/
 backups/
 *.log
+
+# === MyBrainAI Auto Security Shield ===
+.env
+.env.*
+!.env.example
+!*.example.env
+*.pem
+*.key
+*.pfx
+*.p12
+*secret*
+*credentials*
+
+.agentcoord/
+

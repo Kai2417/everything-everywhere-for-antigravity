@@ -10,6 +10,19 @@ import _paths  # noqa: F401
 from acr import sync
 
 
+def _sha256sum():
+    """sha256sum is not on PATH on a stock Windows install; Git ships the same tool."""
+    found = shutil.which("sha256sum")
+    if found:
+        return found
+    git = shutil.which("git")
+    if git:
+        candidate = os.path.normpath(os.path.join(os.path.dirname(git), "..", "usr", "bin", "sha256sum.exe"))
+        if os.path.isfile(candidate):
+            return candidate
+    return "sha256sum"
+
+
 class Sync(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(); self.src = os.path.join(self.tmp, "plugin", "skills", "agent-cost-report")
@@ -25,7 +38,7 @@ class Sync(unittest.TestCase):
         self.assertEqual(sync.shipped_files(self.src), ["SKILL.md", "scripts/acr.py", "scripts/acr/x.py"])
         lines = sync.write_checksums(self.src)
         self.assertEqual(len(lines), 3); self.assertTrue(all(len(l.split("  ")[0]) == 64 for l in lines))
-        r = subprocess.run(["sha256sum", "-c", sync.CHECKSUMS], cwd=self.src, capture_output=True, text=True)
+        r = subprocess.run([_sha256sum(), "-c", sync.CHECKSUMS], cwd=self.src, capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
     def test_drift_then_write(self):

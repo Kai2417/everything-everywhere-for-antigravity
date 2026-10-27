@@ -16,11 +16,13 @@ def data_dir(env=None):
     settings.json is never consulted."""
     env = os.environ if env is None else env
     d = env.get("CLAUDE_MEM_DATA_DIR")
-    return os.path.expanduser(d) if d else os.path.expanduser(os.path.join("~", ".claude-mem"))
+    # Keep the '~/.claude-mem' spelling so expanduser matches the forward-slash contract
+    # (os.path.join would insert '\' on Windows).
+    return os.path.expanduser(d) if d else os.path.expanduser("~/.claude-mem")
 
 
 def db_path(env=None):
-    return os.path.join(data_dir(env), DB_FILE)
+    return data_dir(env).rstrip("/\\") + "/" + DB_FILE
 
 
 def snapshot(outdir, live=None):

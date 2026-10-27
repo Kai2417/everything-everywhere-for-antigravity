@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "f3125db6-4375-433a-8458-629a6f5d380d",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "D:\\Code\\everything-everywhere-for-antigravity\\.agentcoord\\archify_candidate\\workflow.json",
+  "output": "D:\\Code\\everything-everywhere-for-antigravity\\ARCHIFY_FLOW.html",
+  "specification": {
+    "sha256": "1c35cb9fa45d362b1a8e55f5224ae892907e42e0a3c1aebeb264daa99f553809",
+    "bytes": 5579
+  },
+  "artifact": {
+    "sha256": "9ece300f90127eaa93a0e46a6d3d0d43880c9025db73330b2b0228c71567eea2",
+    "bytes": 823770
+  }
+}
